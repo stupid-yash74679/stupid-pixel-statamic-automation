@@ -1,5 +1,5 @@
 {
-    "name": "stupid-pixel/stupid-pixel-statamic-automation",
+    "name": "stupid-yash74679/stupid-pixel-statamic-automation",
     "description": "A package to automate Statamic site tasks.",
     "type": "library",
     "license": "MIT",
@@ -10,8 +10,8 @@
     },
     "authors": [
         {
-            "name": "Your Name",
-            "email": "your@email.com"
+            "name": "Yash Gajjar",
+            "email": "stupid.yashgajjar@gmail.com"
         }
     ],
     "minimum-stability": "dev",
