@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use StupidPixel\StatamicAutomation\Http\Controllers\StatamicAutoBloggerController;
+use StupidPixel\StatamicAutomation\Http\Controllers\NavigateAiController;
+use StupidPixel\StatamicAutomation\Http\Controllers\AiServerController;
+use StupidPixel\StatamicAutomation\Http\Controllers\NavigationController;
+use StupidPixel\StatamicAutomation\Http\Controllers\ProductServiceController;
+use StupidPixel\StatamicAutomation\Http\Controllers\BlogController;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 Route::prefix('api/autoblogger')->middleware(['web', VerifyCsrfToken::class])->group(function () {
@@ -40,4 +45,24 @@ Route::prefix('api/autoblogger')->middleware(['web', VerifyCsrfToken::class])->g
     Route::get('/assets/{container}/{path}', [StatamicAutoBloggerController::class, 'showAsset'])->where('path', '.*');
     Route::put('/assets/{container}/{path}', [StatamicAutoBloggerController::class, 'updateAsset'])->where('path', '.*');
     Route::delete('/assets/{container}/{path}', [StatamicAutoBloggerController::class, 'deleteAsset'])->where('path', '.*');
+});
+
+Route::prefix('api/navigate-ai')->middleware(['web', VerifyCsrfToken::class])->group(function () {
+    Route::post('/generate-pages', [NavigateAiController::class, 'generatePages']);
+});
+
+Route::prefix('api/navigation')->middleware(['web', VerifyCsrfToken::class])->group(function () {
+    Route::post('/update', [NavigationController::class, 'updateNavigation']);
+});
+
+Route::prefix('api/products-services')->middleware(['web', VerifyCsrfToken::class])->group(function () {
+    Route::post('/create', [ProductServiceController::class, 'createProduct']);
+    Route::put('/update/{id}', [ProductServiceController::class, 'updateProduct']);
+    Route::delete('/delete/{id}', [ProductServiceController::class, 'deleteProduct']);
+});
+
+Route::prefix('api/blogs')->middleware(['web', VerifyCsrfToken::class])->group(function () {
+    Route::post('/create', [BlogController::class, 'createBlog']);
+    Route::put('/update/{id}', [BlogController::class, 'updateBlog']);
+    Route::delete('/delete/{id}', [BlogController::class, 'deleteBlog']);
 });
