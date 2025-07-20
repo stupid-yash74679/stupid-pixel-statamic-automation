@@ -5,6 +5,12 @@ use StupidPixel\StatamicAutomation\Http\Controllers\StatamicAutoBloggerControlle
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 Route::prefix('api/autoblogger')->middleware(['web', VerifyCsrfToken::class])->group(function () {
+    Route::get('/csrf-token', function () {
+        return response()
+            ->json(['token' => csrf_token()])
+            ->withCookie(cookie('XSRF-TOKEN', csrf_token(), 60, '/', null, false, false));
+    });
+
     // Entries CRUD
     Route::get('/entries', [StatamicAutoBloggerController::class, 'listEntries']);
     Route::post('/entries', [StatamicAutoBloggerController::class, 'storeEntry']);

@@ -22,7 +22,7 @@ class StatamicAutomation
     public function getCsrfToken(): ?string
     {
         try {
-            $response = $this->client->get('/csrf-token', ['http_errors' => false]);
+            $response = $this->client->get('/api/autoblogger/csrf-token', ['http_errors' => false]);
             $statusCode = $response->getStatusCode();
             $body = $response->getBody()->getContents();
 
@@ -43,22 +43,22 @@ class StatamicAutomation
 
     public function createCollection(array $data): array
     {
-        return $this->post('/collections', $data);
+        return $this->post('/api/autoblogger/collections', $data);
     }
 
     public function createBlueprint(array $data): array
     {
-        return $this->post('/blueprints', $data);
+        return $this->post('/api/autoblogger/blueprints', $data);
     }
 
     public function createAsset(array $data): array
     {
-        return $this->post('/assets', $data);
+        return $this->post('/api/autoblogger/assets', $data);
     }
 
     public function createEntry(array $data): array
     {
-        return $this->post('/entries', $data);
+        return $this->post('/api/autoblogger/entries', $data);
     }
 
     protected function post(string $endpoint, array $data): array

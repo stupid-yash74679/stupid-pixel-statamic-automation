@@ -121,6 +121,16 @@ If the package introduces any database migrations (currently, this package does 
 php artisan migrate
 ```
 
+## Step 5: Add Webhook Environment Variables
+
+To add the necessary webhook environment variables to your `.env` file, run the following Artisan command:
+
+```bash
+php artisan statamic-automation:add-webhook-env
+```
+
+This command will add `WEBHOOK_URL` and `WEBHOOK_SECRET` to your `.env` file if they don't already exist. You should then update these values with your actual webhook endpoint and secret key.
+
 ## Usage
 
 Once installed, you can use the `StupidPixel\StatamicAutomation\StatamicAutomation` class in your application to interact with the Statamic API programmatically.
