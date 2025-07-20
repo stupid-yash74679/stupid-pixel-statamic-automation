@@ -1,0 +1,21 @@
+{
+    "name": "stupid-pixel/stupid-pixel-statamic-automation",
+    "description": "A package to automate Statamic site tasks.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "StupidPixel\\StatamicAutomation\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your@email.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
